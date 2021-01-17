@@ -1,3 +1,5 @@
+PFont f; 
+
 // Laver lister til henholdsvis den højere og lavere værdi af weights og bias, så de individuelle værdier kan bestemmes senere
 float [] LowerWeight             = {-2, -2, -2, -2, -2, -2, -2, -2};
 float [] HigherWeight            = {2, 2, 2, 2, 2, 2, 2, 2};
@@ -23,8 +25,9 @@ CarSystem carSystem       = new CarSystem(populationSize, LowerWeight, HigherWei
 PImage    trackImage;
 
 void setup() {
-  size(500, 600);
+  size(700, 700);
   trackImage = loadImage("track.png");
+  f = createFont("Arial",16,true);
 }
 
 void draw() {
@@ -32,7 +35,10 @@ void draw() {
   fill(255);
   rect(0, 0, 1000, 1000);
   image(trackImage, 0, 80);  
-
+  textFont(f,16);
+  fill(255, 0, 0); 
+  text("I starten bliver bilerne placeret random, og efter et par runder bliver de klogere og klogere", 10, 600);
+  text("og til sidst følger de alle den sorte racerbane", 10, 615);
 
   carSystem.updateAndDisplay();
 
